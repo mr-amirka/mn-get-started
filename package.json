@@ -1,0 +1,53 @@
+{
+  "name": "mn-get-started",
+  "version": "0.0.0",
+  "description": "mn-get-started",
+  "scripts": {
+    "start": "webpack-dev-server --inline --config webpack.config.js --progress",
+    "build": "webpack --mode production",
+    "dev-build": "webpack"
+  },
+  "keywords": [
+    "get started",
+    "example",
+    "minimalist-notation",
+    "mn"
+  ],
+  "author": {
+    "name": "Absolutely Amir",
+    "email": "mr.amirka@ya.ru",
+    "url": "https://github.com/mr-amirka"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:mr-amirka/amirka.git"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/plugin-proposal-decorators": "^7.0.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.0",
+    "html-webpack-plugin": "^3.2.0",
+    "node-mn": "*",
+    "uglifyjs-webpack-plugin": "^2.1.1",
+    "webpack": "^4.17.1",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.7",
+    "css-loader": "^1.0.0",
+    "file-loader": "^2.0.0",
+    "node-sass": "^4.9.3",
+    "raw-loader": "^0.5.1",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.0",
+    "url-loader": "^1.1.1"
+  },
+  "dependencies": {
+    "mn-services": "0.0.3",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0"
+  }
+}
