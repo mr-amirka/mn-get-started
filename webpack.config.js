@@ -2,31 +2,7 @@ const Path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-//const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
-
-
-const { compileSource } = require('node-mn');
-
-compileSource({
-  watch: true,
-  path: './src',
-  entry: {
-     './dist/app': {
-        include: [ /^.*\.(html?|jsx?)$/ ]
-      }
-  },
-  exclude: [ /^.*\/?node_modules\/.*$/ ],
-  presets: [
-    require('mn-presets/medias'),
-    require('mn-presets/prefixes'),
-    require('mn-presets/styles'),
-    require('mn-presets/states'),
-    require('mn-presets/theme'),
-    require('./mn-theme')
-  ]
-});
-
-
+const { MnPlugin } = require('mn-loader');
 
 
 module.exports = {
@@ -77,23 +53,31 @@ module.exports = {
     rules: [
       {
         test: /\.jsx?$/,
-        use: {
-          loader: "babel-loader",
-          options: {
-            cacheDirectory: true,
-            presets: [ "@babel/preset-env", "@babel/preset-react" ],
-            plugins: [
-              "@babel/syntax-dynamic-import",
-              "@babel/plugin-proposal-class-properties",
-              [ "@babel/plugin-proposal-decorators", { legacy: true } ],
-              [ "@babel/plugin-transform-react-jsx", {
-                "pragma": "dom", // default pragma is React.createElement
-                "pragmaFrag": "DomFrag", // default is React.Fragment
-                "throwIfNamespace": false // defaults to true
-              }]
-           ]
+        use: [
+          {
+            loader: "babel-loader",
+            options: {
+              cacheDirectory: true,
+              presets: [ "@babel/preset-env", "@babel/preset-react", "@babel/preset-flow" ],
+              plugins: [
+                "@babel/syntax-dynamic-import",
+                "@babel/plugin-proposal-class-properties",
+                [ "@babel/plugin-proposal-decorators", { legacy: true } ],
+                [ "@babel/plugin-transform-react-jsx", {
+                  "pragma": "dom", // default pragma is React.createElement
+                  "pragmaFrag": "DomFrag", // default is React.Fragment
+                  "throwIfNamespace": false // defaults to true
+                }]
+             ]
+            }
+          },
+          {
+            loader: 'mn-loader',
+            options: {
+              id: 'app'
+            }
           }
-        }
+        ]
       },
       {
         test: /\.css$/,
@@ -152,11 +136,25 @@ module.exports = {
   },
   plugins: [
     //new HardSourceWebpackPlugin(),
+    new MnPlugin({
+      id: 'app',
+      attrs: [ 'm' ],
+      output: './dist/app.css',
+      template: './src/index.html',
+      presets: [
+        require('mn-presets/medias'),
+        require('mn-presets/prefixes'),
+        require('mn-presets/styles'),
+        require('mn-presets/states'),
+        require('mn-presets/theme'),
+        require('./mn-theme'),
+      ]
+    }),
     new HtmlWebpackPlugin({
       inject: 'head',
       template: './src/index.html',
       filename: 'index.html',
-      chunks: [ 'app' ]
+      chunks: [ ]
     })
   ],
   optimization: {
