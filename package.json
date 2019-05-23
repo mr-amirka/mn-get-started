@@ -1,6 +1,6 @@
 {
   "name": "mn-get-started",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "mn-get-started",
   "scripts": {
     "start": "webpack-dev-server --inline --config webpack.config.js --progress",
@@ -14,7 +14,7 @@
     "mn"
   ],
   "author": {
-    "name": "Absolutely Amir",
+    "name": "Amir Absolutely",
     "email": "mr.amirka@ya.ru",
     "url": "https://github.com/mr-amirka"
   },

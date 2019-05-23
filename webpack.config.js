@@ -74,7 +74,8 @@ module.exports = {
           {
             loader: 'mn-loader',
             options: {
-              id: 'app'
+              id: 'app',
+              attrs: [ 'm' ]
             }
           }
         ]
