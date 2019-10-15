@@ -1,6 +1,6 @@
 {
   "name": "mn-get-started",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "mn-get-started",
   "scripts": {
     "start": "webpack-dev-server --inline --config webpack.config.js --progress",

@@ -4,7 +4,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const { MnPlugin } = require('mn-loader');
 
-
 module.exports = {
   watch: true,
   watchOptions: {
@@ -52,6 +51,17 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\/mn-presets\/.*\.js$/,
+        use: [
+          {
+            loader: 'mn-loader/reload',
+            options: {
+              id: 'app'
+            }
+          }
+        ]
+      },
+      {
         test: /\.jsx?$/,
         use: [
           {
@@ -64,9 +74,9 @@ module.exports = {
                 "@babel/plugin-proposal-class-properties",
                 [ "@babel/plugin-proposal-decorators", { legacy: true } ],
                 [ "@babel/plugin-transform-react-jsx", {
-                  "pragma": "dom", // default pragma is React.createElement
-                  "pragmaFrag": "DomFrag", // default is React.Fragment
-                  "throwIfNamespace": false // defaults to true
+                  "pragma": "dom",
+                  "pragmaFrag": "DomFrag",
+                  "throwIfNamespace": false
                 }]
              ]
             }
@@ -143,12 +153,11 @@ module.exports = {
       output: './dist/app.css',
       template: './src/index.html',
       presets: [
+        require('mn-presets/styles'),
         require('mn-presets/medias'),
         require('mn-presets/prefixes'),
-        require('mn-presets/styles'),
         require('mn-presets/states'),
         require('mn-presets/theme'),
-        require('./mn-theme'),
       ]
     }),
     new HtmlWebpackPlugin({

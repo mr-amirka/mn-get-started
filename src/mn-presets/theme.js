@@ -14,5 +14,10 @@ module.exports = (mn) => {
   mn.assign({
     img: 'wmax'
   });
-
+  mn({
+    fCustom: 'f50'
+  });
+  mn({
+    fCustomBig: 'f100'
+  });
 };
