@@ -1,15 +1,9 @@
-require('./mn-presets/theme.js');
+require('./theme.mn.js');
 
 const React = require('react');
 const { render } = require('react-dom');
-const { Component } = React;
-const dom = React.createElement;
-const ready = require('mn-services/ready');
 
-ready(() => {
-	render(<App/>, document.querySelector('[root]'));
-});
-
+render(<App/>, document.querySelector('[root]'));
 
 const App = () => {
   return (

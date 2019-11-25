@@ -15,9 +15,7 @@ module.exports = (mn) => {
     img: 'wmax'
   });
   mn({
-    fCustom: 'f50'
-  });
-  mn({
+    fCustom: 'f50',
     fCustomBig: 'f100'
   });
 };

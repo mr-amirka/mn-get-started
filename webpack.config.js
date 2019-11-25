@@ -16,23 +16,6 @@ module.exports = {
     open: true,
     port: 9000,
     openPage: 'index.html',
-    /*
-    index: '',
-    proxy: {
-      '**': {
-        target: 'https://dartline.ru',
-        secure: false,
-        changeOrigin: true,
-        //pathRewrite: {'^/' : ''},
-        bypass: (req, res, proxyOptions) => {
-          const path = req.path;
-          if (/\.(css|js)$/.test(path)) {
-            return path.replace('assets/', '');
-          }
-        }
-      }
-    }
-    */
   },
   mode:
     //'production',
@@ -50,14 +33,12 @@ module.exports = {
   },
   module: {
     rules: [
+      // hot-reload MN build handlers
       {
-        test: /\/mn-presets\/.*\.js$/,
+        test: /\.mn\.js$/,
         use: [
           {
             loader: 'mn-loader/reload',
-            options: {
-              id: 'app'
-            }
           }
         ]
       },
@@ -74,7 +55,7 @@ module.exports = {
                 "@babel/plugin-proposal-class-properties",
                 [ "@babel/plugin-proposal-decorators", { legacy: true } ],
                 [ "@babel/plugin-transform-react-jsx", {
-                  "pragma": "dom",
+                  "pragma": "React.createElement",
                   "pragmaFrag": "DomFrag",
                   "throwIfNamespace": false
                 }]
@@ -146,7 +127,6 @@ module.exports = {
     ]
   },
   plugins: [
-    //new HardSourceWebpackPlugin(),
     new MnPlugin({
       id: 'app',
       attrs: [ 'm' ],
