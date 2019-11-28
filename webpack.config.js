@@ -1,14 +1,13 @@
 const Path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const { MnPlugin } = require('mn-loader');
+const {MnPlugin} = require('minimalist-notation/webpack-loader');
 
 module.exports = {
   watch: true,
   watchOptions: {
     aggregateTimeout: 300,
-    poll: 1000
+    poll: 1000,
   },
   devServer: {
     contentBase: Path.join(__dirname, 'dist'),
@@ -21,15 +20,15 @@ module.exports = {
     //'production',
     'development',
   resolve: {
-    extensions: [ '.js', '.jsx' ]
+    extensions: [ '.js', '.jsx' ],
   },
   entry: {
-    app: './src/app.jsx'
+    app: './src/app.jsx',
   },
   output: {
-    filename: '[name].js',
+    filename: '[name].[contenthash].js',
     path: __dirname + '/dist',
-    publicPath: '/'
+    publicPath: '/',
   },
   module: {
     rules: [
@@ -38,9 +37,9 @@ module.exports = {
         test: /\.mn\.js$/,
         use: [
           {
-            loader: 'mn-loader/reload',
-          }
-        ]
+            loader: 'minimalist-notation/webpack-loader/reload',
+          },
+        ],
       },
       {
         test: /\.jsx?$/,
@@ -55,47 +54,36 @@ module.exports = {
                 "@babel/plugin-proposal-class-properties",
                 [ "@babel/plugin-proposal-decorators", { legacy: true } ],
                 [ "@babel/plugin-transform-react-jsx", {
-                  "pragma": "React.createElement",
-                  "pragmaFrag": "DomFrag",
-                  "throwIfNamespace": false
-                }]
-             ]
-            }
+                  "pragma": "React.createElement", // default pragma is React.createElement
+                  "pragmaFrag": "DomFrag", // default is React.Fragment
+                  "throwIfNamespace": false, // defaults to true
+                }],
+             ],
+           },
           },
           {
-            loader: 'mn-loader',
+            loader: 'minimalist-notation/webpack-loader',
             options: {
               id: 'app',
-              attrs: [ 'm' ]
-            }
-          }
-        ]
+              attrs: [ 'm' ],
+            },
+          },
+        ],
       },
       {
-        test: /\.css$/,
+        test: /\.s?css$/,
         use: [
           {
             loader: "style-loader"
-          }, {
-            loader: "css-loader",
-            options: {
-              minimize: true
-            }
-          }
-        ]
-      },
-      {
-        test: /\.scss$/,
-        use: [
+          },
           {
-            loader: "style-loader"
-          }, {
             loader: "css-loader",
             options: {
-              minimize: true
-            }
-          }, {
-            loader: "sass-loader"
+              minimize: true,
+            },
+          },
+          {
+            loader: "sass-loader",
           }
         ]
       },
@@ -107,64 +95,40 @@ module.exports = {
             options: {
               name: '[name].[hash].[ext]',
               outputPath: 'assets/static/'
-            }
-          }
-        ]
+            },
+          },
+        ],
       },
-      /*
-      {
-        test: /\.(jpg|jpeg|png|svg|gif|woff|woff2|otf|ttf|eot|mp3)$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 100000
-            }
-          }
-        ]
-      },
-      */
-    ]
+    ],
   },
   plugins: [
     new MnPlugin({
       id: 'app',
       attrs: [ 'm' ],
-      output: './dist/app.css',
-      template: './src/index.html',
+      publicUrl: '/',
+      filename: 'mn.[hash].css',
+      output: [
+        './dist/',
+      ],
+      injectTo: [
+        './src/index.html',
+      ],
+      template: [
+        './src/index.html',
+      ],
       presets: [
         require('mn-presets/styles'),
         require('mn-presets/medias'),
         require('mn-presets/prefixes'),
         require('mn-presets/states'),
         require('mn-presets/theme'),
-      ]
+      ],
     }),
     new HtmlWebpackPlugin({
-      inject: 'head',
+      inject: 'body',
       template: './src/index.html',
       filename: 'index.html',
-      chunks: [ ]
-    })
+      chunks: [ 'app' ],
+    }),
   ],
-  optimization: {
-    minimizer: [
-      new UglifyJsPlugin({
-        extractComments: false,
-        sourceMap: false,
-        uglifyOptions: {
-          warnings: false,
-          ie8: false,
-          safari10: false,
-          compress: {
-            unsafe_math: true
-          },
-          output: {
-            comments: false,
-            beautify: false
-          }
-        }
-      })
-    ]
-  }
 };

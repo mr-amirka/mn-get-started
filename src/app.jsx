@@ -1,11 +1,11 @@
 require('./theme.mn.js');
-
 const React = require('react');
-const { render } = require('react-dom');
+const {render} = require('react-dom');
+console.log({root: document.querySelector('[root]')});
 
 render(<App/>, document.querySelector('[root]'));
 
-const App = () => {
+function App() {
   return (
     <div m="h100vh rlv bgE-D">
       <div m="abs sht bsSolid b0 bb1 bcC bgF">
