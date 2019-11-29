@@ -105,10 +105,8 @@ module.exports = {
     new MnPlugin({
       id: 'app',
       attrs: [ 'm' ],
-      publicUrl: '/',
-      filename: 'mn.[hash].css',
       output: [
-        './dist/',
+        './dist/mn.css',
       ],
       injectTo: [
         './src/index.html',

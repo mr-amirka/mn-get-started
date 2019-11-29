@@ -1,7 +1,6 @@
 require('./theme.mn.js');
 const React = require('react');
 const {render} = require('react-dom');
-console.log({root: document.querySelector('[root]')});
 
 render(<App/>, document.querySelector('[root]'));
 

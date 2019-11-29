@@ -1,6 +1,6 @@
 {
   "name": "mn-get-started",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "mn-get-started",
   "scripts": {
     "start": "webpack-dev-server --inline --config webpack.config.js --progress",
@@ -33,7 +33,7 @@
     "@babel/preset-flow": "^7.0.0",
     "babel-loader": "^8.0.0",
     "html-webpack-plugin": "^3.2.0",
-    "minimalist-notation": "1.4.11",
+    "minimalist-notation": "1.4.12",
     "webpack": "^4.17.1",
     "webpack-cli": "^3.1.0",
     "webpack-dev-server": "^3.1.7",
