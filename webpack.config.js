@@ -65,7 +65,7 @@ module.exports = {
             loader: 'minimalist-notation/webpack-loader',
             options: {
               id: 'app',
-              attrs: [ 'm' ],
+              attrs: {className: 'class'},
             },
           },
         ],
@@ -104,7 +104,7 @@ module.exports = {
   plugins: [
     new MnPlugin({
       id: 'app',
-      attrs: [ 'm' ],
+      attrs: {className: 'class'},
       output: [
         './dist/mn.css',
       ],
