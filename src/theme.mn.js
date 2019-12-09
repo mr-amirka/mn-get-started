@@ -1,6 +1,4 @@
-
 module.exports = (mn) => {
-
   /*
   mn({
     ffTheme: {
@@ -9,8 +7,6 @@ module.exports = (mn) => {
       }
     }
   });
-  */
-
   mn.assign({
     img: 'wmax'
   });
@@ -18,4 +14,5 @@ module.exports = (mn) => {
     fCustom: 'f50',
     fCustomBig: 'f100'
   });
+  */
 };

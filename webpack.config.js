@@ -32,7 +32,6 @@ module.exports = {
   },
   module: {
     rules: [
-      // hot-reload MN build handlers
       {
         test: /\.mn\.js$/,
         use: [
@@ -104,12 +103,9 @@ module.exports = {
   plugins: [
     new MnPlugin({
       id: 'app',
-      attrs: {className: 'class'},
+      attrs: {'class': 'class'},
       output: [
         './dist/mn.css',
-      ],
-      injectTo: [
-        './src/index.html',
       ],
       template: [
         './src/index.html',
