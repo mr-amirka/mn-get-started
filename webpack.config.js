@@ -1,10 +1,8 @@
 const Path = require('path');
-const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {MnPlugin} = require('minimalist-notation/webpack-loader');
 
 module.exports = {
-  watch: true,
   watchOptions: {
     aggregateTimeout: 300,
     poll: 1000,
@@ -17,10 +15,10 @@ module.exports = {
     openPage: 'index.html',
   },
   mode:
-    //'production',
+    // 'production',
     'development',
   resolve: {
-    extensions: [ '.js', '.jsx' ],
+    extensions: ['.js', '.jsx'],
   },
   entry: {
     app: './src/app.jsx',
@@ -44,21 +42,30 @@ module.exports = {
         test: /\.jsx?$/,
         use: [
           {
-            loader: "babel-loader",
+            loader: 'babel-loader',
             options: {
               cacheDirectory: true,
-              presets: [ "@babel/preset-env", "@babel/preset-react", "@babel/preset-flow" ],
+              presets: [
+                '@babel/preset-env',
+                '@babel/preset-react',
+                '@babel/preset-flow',
+              ],
               plugins: [
-                "@babel/syntax-dynamic-import",
-                "@babel/plugin-proposal-class-properties",
-                [ "@babel/plugin-proposal-decorators", { legacy: true } ],
-                [ "@babel/plugin-transform-react-jsx", {
-                  "pragma": "React.createElement", // default pragma is React.createElement
-                  "pragmaFrag": "DomFrag", // default is React.Fragment
-                  "throwIfNamespace": false, // defaults to true
+                '@babel/syntax-dynamic-import',
+                '@babel/plugin-proposal-class-properties',
+                ['@babel/plugin-proposal-decorators', {legacy: true}],
+                ['@babel/plugin-transform-react-jsx', {
+                  // default pragma is React.createElement
+                  'pragma': 'React.createElement',
+
+                  // default is React.Fragment
+                  'pragmaFrag': 'DomFrag',
+
+                  // defaults to true
+                  'throwIfNamespace': false,
                 }],
-             ],
-           },
+              ],
+            },
           },
           {
             loader: 'minimalist-notation/webpack-loader',
@@ -73,18 +80,18 @@ module.exports = {
         test: /\.s?css$/,
         use: [
           {
-            loader: "style-loader"
+            loader: 'style-loader',
           },
           {
-            loader: "css-loader",
+            loader: 'css-loader',
             options: {
               minimize: true,
             },
           },
           {
-            loader: "sass-loader",
-          }
-        ]
+            loader: 'sass-loader',
+          },
+        ],
       },
       {
         test: /\.(jpg|jpeg|png|svg|gif|woff|woff2|otf|ttf|eot|mp3)$/,
@@ -93,7 +100,7 @@ module.exports = {
             loader: 'file-loader',
             options: {
               name: '[name].[hash].[ext]',
-              outputPath: 'assets/static/'
+              outputPath: 'assets/static/',
             },
           },
         ],
@@ -103,7 +110,7 @@ module.exports = {
   plugins: [
     new MnPlugin({
       id: 'app',
-      attrs: {'class': 'class'},
+      attrs: ['class'],
       output: [
         './dist/mn.css',
       ],
@@ -122,7 +129,7 @@ module.exports = {
       inject: 'body',
       template: './src/index.html',
       filename: 'index.html',
-      chunks: [ 'app' ],
+      chunks: ['app'],
     }),
   ],
 };

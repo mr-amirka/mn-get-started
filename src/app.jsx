@@ -1,8 +1,8 @@
-require('./theme.mn.js');
+require('./style.mn.js');
 const React = require('react');
 const {render} = require('react-dom');
 
-render(<App/>, document.querySelector('[root]'));
+render(<App/>, document.querySelector('#app'));
 
 function App() {
   return (
@@ -22,7 +22,11 @@ function App() {
             <div className="abs shb bsSolid b0 bt1 bcC bgF">
               <div className="tbl w h50">
                 <div className="ph15">
-                  <div className="rlv st1">Footer <span className="mh5">©</span> {(new Date()).getFullYear()}</div>
+                  <div className="rlv st1">
+                    Footer <span className="mh5">©</span> {
+                      (new Date()).getFullYear()
+                    }
+                  </div>
                 </div>
               </div>
             </div>
