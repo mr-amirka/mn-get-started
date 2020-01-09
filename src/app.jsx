@@ -2,7 +2,7 @@ require('./style.mn.js');
 const React = require('react');
 const {render} = require('react-dom');
 
-render(<App/>, document.querySelector('#app'));
+render(<App/>, document.getElementById('app'));
 
 function App() {
   return (

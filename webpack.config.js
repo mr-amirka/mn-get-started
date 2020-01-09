@@ -122,7 +122,7 @@ module.exports = {
         require('mn-presets/medias'),
         require('mn-presets/prefixes'),
         require('mn-presets/states'),
-        require('mn-presets/theme'),
+        require('mn-presets/main'),
       ],
     }),
     new HtmlWebpackPlugin({
