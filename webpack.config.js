@@ -59,7 +59,7 @@ module.exports = {
                   'pragma': 'React.createElement',
 
                   // default is React.Fragment
-                  'pragmaFrag': 'DomFrag',
+                  'pragmaFrag': 'React.Fragment',
 
                   // defaults to true
                   'throwIfNamespace': false,
