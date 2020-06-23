@@ -7,18 +7,19 @@ render(<App/>, document.getElementById('app'));
 function App() {
   return (
     <div className="h100vh rlv bgE-D">
-      <div className="abs sht bsSolid b0 bb1 bcC bgF">
+      <div className="fixed sht bsSolid b0 bb1 bcC bgF">
         <div className="tbl w h50">
           <div className="ph15">
             Header
           </div>
         </div>
       </div>
-      <div className="abs shb st50 ovxHidden ovyScroll">
+      <div className="abs shb st50 ovxH ovyA">
         <div className="tbl sq">
           <div className="p15 pb65 rlv tc">
             <div className="f30">Minimalist Notation</div>
             <div className="fCustom fCustomBig*2">Example</div>
+            <div className="sq40 rlv bg0 spnr3000"/>
             <div className="abs shb bsSolid b0 bt1 bcC bgF">
               <div className="tbl w h50">
                 <div className="ph15">
