@@ -7,7 +7,7 @@ render(<App/>, document.getElementById('app'));
 function App() {
   return (
     <div className="h100vh rlv bgE-D">
-      <div className="fixed sht bsSolid b0 bb1 bcC bgF">
+      <div className="fixed sht bs b0 bb1 bcC bgF">
         <div className="tbl w h50">
           <div className="ph15">
             Header
@@ -20,7 +20,7 @@ function App() {
             <div className="f30">Minimalist Notation</div>
             <div className="fCustom fCustomBig*2">Example</div>
             <div className="sq40 rlv bg0 spnr3000"/>
-            <div className="abs shb bsSolid b0 bt1 bcC bgF">
+            <div className="abs shb bs b0 bt1 bcC bgF">
               <div className="tbl w h50">
                 <div className="ph15">
                   <div className="rlv st1">
