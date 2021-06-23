@@ -1,6 +1,8 @@
 const Path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const {MnPlugin} = require('minimalist-notation/webpack-loader');
+const {
+  MnPlugin,
+} = require('minimalist-notation/webpack-loader');
 
 module.exports = {
   watchOptions: {
@@ -114,6 +116,15 @@ module.exports = {
       output: [
         './dist/mn.css',
       ],
+      path: './src/',
+      /*
+      include: [
+        /^.*\.(php|html?)$/,
+      ],
+      exclude: [
+        /\/node_modules\/|(.*\.tmp)/,
+      ],
+      */
       template: [
         './src/index.html',
       ],
