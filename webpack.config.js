@@ -1,5 +1,6 @@
 const Path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const {
   MnPlugin,
 } = require('minimalist-notation/webpack-loader');
@@ -26,7 +27,7 @@ module.exports = {
     app: './src/index.js',
   },
   output: {
-    filename: '[name].[contenthash].js',
+    filename: '[name].js',
     path: __dirname + '/dist',
     publicPath: '/',
   },
@@ -82,7 +83,8 @@ module.exports = {
         test: /\.s?css$/,
         use: [
           {
-            loader: 'style-loader',
+            loader: MiniCssExtractPlugin.loader,
+            // loader: 'style-loader',
           },
           {
             loader: 'css-loader',
@@ -110,6 +112,9 @@ module.exports = {
     ],
   },
   plugins: [
+    new MiniCssExtractPlugin({
+      filename: 'app.css',
+    }),
     new MnPlugin({
       id: 'app',
       attrs: ['class'],
@@ -140,7 +145,7 @@ module.exports = {
       inject: 'body',
       template: './src/index.html',
       filename: 'index.html',
-      chunks: ['app'],
+      chunks: [],
     }),
   ],
 };
