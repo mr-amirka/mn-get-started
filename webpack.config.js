@@ -137,7 +137,7 @@ module.exports = {
         require('minimalist-notation/presets/styles'),
         require('minimalist-notation/presets/medias'),
         require('minimalist-notation/presets/prefixes'),
-        require('minimalist-notation/presets/states'),
+        require('minimalist-notation/presets/synonyms'),
         require('minimalist-notation/presets/main'),
       ],
     }),
